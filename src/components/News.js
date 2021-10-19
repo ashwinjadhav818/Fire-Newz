@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import NewsItem from './NewsItem';
+import PropTypes from 'prop-types';
 
 export default class News extends Component {
+	static defaultProps = {
+		country: 'in',
+		pageSize: 15,
+		category: 'general',
+	};
+
+	static propTypes = {
+		country: PropTypes.string,
+		pageSize: PropTypes.number,
+		category: PropTypes.string,
+		apiKey: PropTypes.string.isRequired,
+	};
+
 	constructor() {
 		super();
 		this.state = {
@@ -12,7 +26,7 @@ export default class News extends Component {
 	}
 
 	async componentDidMount() {
-		const url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}`;
+		const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&category=${this.props.category}`;
 		const data = await fetch(url);
 		const res = await data.json();
 
@@ -32,9 +46,11 @@ export default class News extends Component {
 			this.setState({
 				articles: '',
 			});
-			let url = `https://newsapi.org/v2/top-headlines?country=in&apikey=${
-				this.props.apiKey
-			}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+			let url = `https://newsapi.org/v2/top-headlines?country=${
+				this.props.country
+			}&apikey=${this.props.apiKey}&page=${this.state.page + 1}&pageSize=${
+				this.props.pageSize
+			}&category=${this.props.category}`;
 			let data = await fetch(url);
 			let res = await data.json();
 			this.setState({
@@ -49,9 +65,11 @@ export default class News extends Component {
 			articles: '',
 		});
 
-		let url = `https://newsapi.org/v2/top-headlines?country=in&apikey=${
-			this.props.apiKey
-		}&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+		let url = `https://newsapi.org/v2/top-headlines?country=${
+			this.props.country
+		}&apikey=${this.props.apiKey}&page=${this.state.page - 1}&pageSize=${
+			this.props.pageSize
+		}&category=${this.props.category}`;
 		let data = await fetch(url);
 		let res = await data.json();
 		this.setState({
