@@ -83,12 +83,12 @@ export default class News extends Component {
 
 		return (
 			<div className="container my-3">
-				<h1 className="text-center">Fire Newz - Top Headlines 🔥</h1>
+				<h1 className="text-center my-2">Fire Newz - Top Headlines 🔥</h1>
 				<div className="row d-flex justify-content-center align-items-center">
 					{this.state.articles.length > 0 ? (
 						this.state.articles.map(
 							({ title, description, urlToImage, url }, index) => (
-								<div className="col-lg-4 col-md-2" key={index}>
+								<div className="col-md-4 col-md-2" key={index}>
 									<NewsItem
 										title={title ? title.slice(0, 50) : ''}
 										description={description ? description.slice(0, 133) : ''}

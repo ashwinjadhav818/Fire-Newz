@@ -42,8 +42,8 @@ export default class Navbar extends Component {
 								</Link>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 									{categories.map((category) => (
-										<li>
-											<Link class="dropdown-item" to={'/' + category}>
+										<li key={category}>
+											<Link class="dropdown-item" to={'/category/' + category}>
 												{category.charAt(0).toUpperCase() + category.slice(1)}
 											</Link>
 										</li>

@@ -30,7 +30,7 @@ export default class App extends Component {
 							/>
 						</Route>
 						{this.categories.map((category) => (
-							<Route path={'/' + category} exact>
+							<Route path={'/category/' + category} exact>
 								<News
 									apiKey={process.env.REACT_APP_API_KEY}
 									pageSize={15}
