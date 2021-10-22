@@ -29,9 +29,9 @@ export default class Navbar extends Component {
 									Home
 								</Link>
 							</li>
-							<li class="nav-item dropdown">
+							<li className="nav-item dropdown">
 								<Link
-									class="nav-link dropdown-toggle"
+									className="nav-link dropdown-toggle"
 									to=""
 									id="navbarDropdown"
 									role="button"
@@ -40,10 +40,13 @@ export default class Navbar extends Component {
 								>
 									Category
 								</Link>
-								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
 									{categories.map((category) => (
 										<li key={category}>
-											<Link class="dropdown-item" to={'/category/' + category}>
+											<Link
+												className="dropdown-item"
+												to={'/category/' + category}
+											>
 												{category.charAt(0).toUpperCase() + category.slice(1)}
 											</Link>
 										</li>
